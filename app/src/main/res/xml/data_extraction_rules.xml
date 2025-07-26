@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+             The following are the default rules that will be applied if no rules are specified.
+             You can modify these rules to control what data is backed up to the cloud.
+             
+             For more information, see:
+             https://developer.android.com/guide/topics/data/autobackup#XML-Rules
+        -->
+        
+        <!-- Include all app data -->
+        <include domain="sharedpref" path="."/>
+        <include domain="database" path="."/>
+        <include domain="file" path="."/>
+        <include domain="root" path="."/>
+        
+        <!-- Exclude sensitive data and large files -->
+        <exclude domain="sharedpref" path="sensitive_prefs.xml"/>
+        <exclude domain="file" path="temp/"/>
+        <exclude domain="file" path="cache/"/>
+        <exclude domain="file" path="logs/"/>
+        <exclude domain="file" path="*.tmp"/>
+        <exclude domain="file" path="*.log"/>
+        
+        <!-- Exclude large media files from backup -->
+        <exclude domain="file" path="media/"/>
+        <exclude domain="file" path="images/"/>
+        <exclude domain="file" path="videos/"/>
+        <exclude domain="file" path="*.jpg"/>
+        <exclude domain="file" path="*.jpeg"/>
+        <exclude domain="file" path="*.png"/>
+        <exclude domain="file" path="*.gif"/>
+        <exclude domain="file" path="*.mp4"/>
+        <exclude domain="file" path="*.avi"/>
+        <exclude domain="file" path="*.mov"/>
+        <exclude domain="file" path="*.mkv"/>
+        <exclude domain="file" path="*.mp3"/>
+        <exclude domain="file" path="*.wav"/>
+        <exclude domain="file" path="*.aac"/>
+        
+        <!-- Exclude compressed/processed files -->
+        <exclude domain="file" path="compressed/"/>
+        <exclude domain="file" path="processed/"/>
+        <exclude domain="file" path="*.compressed"/>
+        <exclude domain="file" path="*.processed"/>
+        
+    </cloud-backup>
+    
+    <device-transfer>
+        <!-- Rules for device-to-device transfer -->
+        <include domain="sharedpref" path="."/>
+        <include domain="database" path="."/>
+        <include domain="file" path="settings/"/>
+        <include domain="file" path="config/"/>
+        
+        <!-- Exclude large files from device transfer -->
+        <exclude domain="file" path="media/"/>
+        <exclude domain="file" path="cache/"/>
+        <exclude domain="file" path="temp/"/>
+        <exclude domain="file" path="logs/"/>
+    </device-transfer>
+</data-extraction-rules>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium">
+
+        <!-- Storage Progress Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Storage Progress Indicator -->
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/storage_progress_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="false"
+                app:trackThickness="@dimen/storage_progress_thickness"
+                app:indicatorSize="@dimen/storage_progress_size"
+                tools:progress="65" />
+
+            <!-- Storage Details Container -->
+            <LinearLayout
+                android:id="@+id/storage_details_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:orientation="vertical">
+
+                <!-- Storage Stats Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Used Storage -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Used"
+                            android:textSize="@dimen/text_caption"
+                            android:textColor="@color/on_surface_variant" />
+
+                        <TextView
+                            android:id="@+id/used_storage_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_body"
+                            android:textColor="@color/on_surface"
+                            android:textStyle="bold"
+                            tools:text="45.2 GB" />
+
+                    </LinearLayout>
+
+                    <!-- Total Storage -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total"
+                            android:textSize="@dimen/text_caption"
+                            android:textColor="@color/on_surface_variant" />
+
+                        <TextView
+                            android:id="@+id/total_storage_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_body"
+                            android:textColor="@color/on_surface"
+                            android:textStyle="bold"
+                            tools:text="128 GB" />
+
+                    </LinearLayout>
+
+                    <!-- Available Storage -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Available"
+                            android:textSize="@dimen/text_caption"
+                            android:textColor="@color/on_surface_variant" />
+
+                        <TextView
+                            android:id="@+id/available_storage_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_body"
+                            android:textColor="@color/on_surface"
+                            android:textStyle="bold"
+                            tools:text="82.8 GB" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Media Count -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Files:"
+                        android:textSize="@dimen/text_caption"
+                        android:textColor="@color/on_surface_variant" />
+
+                    <TextView
+                        android:id="@+id/media_count_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:textSize="@dimen/text_body"
+                        android:textColor="@color/on_surface"
+                        android:textStyle="bold"
+                        tools:text="1,247 files" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</merge> 

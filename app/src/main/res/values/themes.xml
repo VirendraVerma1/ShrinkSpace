@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ShrinkSpace" parent="Theme.Material3.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/surface</item>
+        <!-- Surface colors. -->
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <!-- Background colors. -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/on_background</item>
+        <!-- Error colors. -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/white</item>
+        <!-- Custom attributes for our components -->
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardStrokeColor">@color/card_stroke</item>
+        <item name="progressTrackColor">@color/progress_track</item>
+        <item name="progressIndicatorColor">@color/progress_indicator</item>
+        <!-- Material 3 specific attributes -->
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+    </style>
+    
+    <!-- Dark theme variant -->
+    <style name="Theme.ShrinkSpace.Dark" parent="Theme.Material3.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/surface</item>
+        <!-- Surface colors. -->
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <!-- Background colors. -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/on_background</item>
+        <!-- Error colors. -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/white</item>
+        <!-- Custom attributes for our components -->
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardStrokeColor">@color/card_stroke</item>
+        <item name="progressTrackColor">@color/progress_track</item>
+        <item name="progressIndicatorColor">@color/progress_indicator</item>
+        <!-- Material 3 specific attributes -->
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.DynamicColors</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+    </style>
+    
+    <!-- Custom styles for our components -->
+    <style name="Widget.ShrinkSpace.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardStrokeColor">@color/card_stroke</item>
+        <item name="cardStrokeWidth">0dp</item>
+        <item name="android:foreground">@drawable/ripple_selector</item>
+    </style>
+    
+    <style name="Widget.ShrinkSpace.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="cornerRadius">@dimen/card_corner_radius</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+    
+    <style name="Widget.ShrinkSpace.Button.Compact" parent="Widget.ShrinkSpace.Button">
+        <item name="android:minHeight">@dimen/button_compact_height</item>
+    </style>
+    
+    <style name="Widget.ShrinkSpace.Chip" parent="Widget.Material3.Chip.Assist">
+        <item name="chipMinHeight">@dimen/chip_height</item>
+        <item name="android:textSize">@dimen/text_caption</item>
+    </style>
+    
+    <style name="Widget.ShrinkSpace.Chip.Compact" parent="Widget.ShrinkSpace.Chip">
+        <item name="chipMinHeight">@dimen/chip_compact_height</item>
+    </style>
+    
+    <style name="Widget.ShrinkSpace.ProgressIndicator" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackThickness">@dimen/progress_track_thickness</item>
+        <item name="indicatorSize">@dimen/progress_indicator_size</item>
+    </style>
+    
+    <style name="Widget.ShrinkSpace.Slider" parent="Widget.Material3.Slider">
+        <item name="trackThickness">@dimen/slider_thickness</item>
+    </style>
+    
+</resources>

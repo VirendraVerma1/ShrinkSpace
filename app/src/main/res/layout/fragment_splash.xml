@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- App Logo -->
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:text="@string/app_name"
+        android:textColor="@color/on_background"
+        android:textSize="@dimen/text_display"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_logo" />
+
+    <!-- App Tagline -->
+    <TextView
+        android:id="@+id/app_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:text="Organize and optimize your media"
+        android:textColor="@color/on_background_variant"
+        android:textSize="@dimen/text_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_name" />
+
+    <!-- Loading Animation -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_animation"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_animation" />
+
+    <!-- Loading Text -->
+    <TextView
+        android:id="@+id/loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="Initializing..."
+        android:textColor="@color/on_background_variant"
+        android:textSize="@dimen/text_caption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loading_animation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout> 

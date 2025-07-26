@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
+
+    <LinearLayout
+        android:id="@+id/error_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_xlarge"
+        android:gravity="center">
+
+        <!-- Error Icon and Info Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/spacing_large">
+
+            <!-- Error Icon -->
+            <ImageView
+                android:id="@+id/error_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:background="@drawable/ic_error_state"
+                android:contentDescription="@string/error_icon"
+                tools:background="@drawable/ic_launcher_foreground" />
+
+            <!-- Error Info Container -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Error Title -->
+                <TextView
+                    android:id="@+id/error_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_headline"
+                    android:textColor="@color/on_surface"
+                    android:textStyle="bold"
+                    tools:text="Permission Denied" />
+
+                <!-- Error Chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/error_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:textSize="@dimen/text_caption"
+                    app:chipMinHeight="@dimen/chip_compact_height"
+                    tools:text="Permission" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Error Message -->
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/on_surface_variant"
+            android:gravity="center"
+            android:maxLines="3"
+            tools:text="ShrinkSpace needs access to your media files to help you organize and clean up storage space." />
+
+        <!-- Action Container -->
+        <LinearLayout
+            android:id="@+id/action_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Retry Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/retry_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:text="Try Again"
+                android:textSize="@dimen/text_body"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/card_corner_radius"
+                tools:visibility="visible" />
+
+            <!-- Settings Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/settings_button"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="Open Settings"
+                android:textSize="@dimen/text_body"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/card_corner_radius"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</merge> 

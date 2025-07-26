@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <!-- Media Image -->
+        <ImageView
+            android:id="@+id/media_image"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/placeholder_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+        <!-- Media Title -->
+        <TextView
+            android:id="@+id/media_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/on_surface"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/media_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/type_chip"
+            tools:text="Photo_2024_01_15.jpg" />
+
+        <!-- Media Size -->
+        <TextView
+            android:id="@+id/media_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/text_caption"
+            android:textColor="@color/on_surface_variant"
+            app:layout_constraintTop_toBottomOf="@id/media_title"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="2.5 MB" />
+
+        <!-- Media Type Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/type_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textSize="@dimen/text_caption"
+            app:chipMinHeight="@dimen/chip_compact_height"
+            app:layout_constraintTop_toBottomOf="@id/media_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Photo" />
+
+        <!-- Selection Checkbox -->
+        <ImageView
+            android:id="@+id/media_checkbox"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:src="@drawable/ic_check_circle"
+            android:background="@drawable/circle_background"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
+
+        <!-- Selection Overlay -->
+        <View
+            android:id="@+id/overlay_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/selection_background"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/media_image"
+            app:layout_constraintBottom_toBottomOf="@id/media_image"
+            app:layout_constraintStart_toStartOf="@id/media_image"
+            app:layout_constraintEnd_toEndOf="@id/media_image"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge> 

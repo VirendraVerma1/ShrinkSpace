@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
+
+    <LinearLayout
+        android:id="@+id/compression_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium">
+
+        <!-- Quality Slider Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/spacing_medium">
+
+            <!-- Quality Slider -->
+            <com.google.android.material.slider.Slider
+                android:id="@+id/quality_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small"
+                app:trackThickness="@dimen/slider_thickness"
+                tools:value="80" />
+
+            <!-- Quality Info Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Quality Text -->
+                <TextView
+                    android:id="@+id/quality_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_body"
+                    android:textColor="@color/on_surface"
+                    android:textStyle="bold"
+                    tools:text="Quality: 80%" />
+
+                <!-- Quality Chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/quality_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_caption"
+                    app:chipMinHeight="@dimen/chip_compact_height"
+                    tools:text="Good" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Compression Info Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/compression_info_background"
+            android:padding="@dimen/spacing_medium">
+
+            <!-- Size Reduction Text -->
+            <TextView
+                android:id="@+id/size_reduction_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:textSize="@dimen/text_caption"
+                android:textColor="@color/on_surface_variant"
+                tools:text="Small reduction" />
+
+            <!-- Preview Text -->
+            <TextView
+                android:id="@+id/preview_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/on_surface"
+                android:textStyle="bold"
+                tools:text="Good quality" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</merge> 

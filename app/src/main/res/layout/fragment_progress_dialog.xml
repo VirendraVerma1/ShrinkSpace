@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_large">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:textSize="@dimen/text_headline"
+        android:textColor="@color/on_surface"
+        android:textStyle="bold"
+        android:gravity="center"
+        tools:text="Processing Files..." />
+
+    <!-- Message -->
+    <TextView
+        android:id="@+id/message_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/on_surface_variant"
+        android:gravity="center"
+        tools:text="Please wait while we process your files." />
+
+    <!-- Progress Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Progress Bar -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:indeterminate="false"
+            app:trackThickness="@dimen/progress_track_thickness"
+            app:indicatorSize="@dimen/progress_indicator_size"
+            tools:progress="75" />
+
+        <!-- Progress Text -->
+        <TextView
+            android:id="@+id/progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_caption"
+            android:textColor="@color/on_surface_variant"
+            tools:text="75%" />
+
+    </LinearLayout>
+
+</LinearLayout> 

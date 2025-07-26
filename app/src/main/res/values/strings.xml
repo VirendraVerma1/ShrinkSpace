@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShrinkSpace</string>
+    
+    <!-- UI Component Strings -->
+    <string name="empty_state_illustration">Empty state illustration</string>
+    <string name="loading_animation">Loading animation</string>
+    <string name="error_icon">Error icon</string>
+    
+    <!-- Media Types -->
+    <string name="media_type_photo">Photo</string>
+    <string name="media_type_video">Video</string>
+    <string name="media_type_audio">Audio</string>
+    <string name="media_type_file">File</string>
+    
+    <!-- Quality Levels -->
+    <string name="quality_high">High</string>
+    <string name="quality_good">Good</string>
+    <string name="quality_medium">Medium</string>
+    <string name="quality_low">Low</string>
+    
+    <!-- Error Types -->
+    <string name="error_type_permission">Permission</string>
+    <string name="error_type_storage">Storage</string>
+    <string name="error_type_network">Network</string>
+    <string name="error_type_media">Media</string>
+    <string name="error_type_compression">Compression</string>
+    <string name="error_type_general">Error</string>
+    
+    <!-- Button Text -->
+    <string name="button_grant_permissions">Grant Permissions</string>
+    <string name="button_learn_more">Learn More</string>
+    <string name="button_try_again">Try Again</string>
+    <string name="button_open_settings">Open Settings</string>
+    <string name="button_skip">Skip</string>
+    <string name="button_keep_this">Keep This</string>
+    
+    <!-- Progress Text -->
+    <string name="progress_scanning_media">Scanning Media...</string>
+    <string name="progress_processing_files">Processing files...</string>
+    <string name="progress_compressing">Compressing...</string>
+    <string name="progress_analyzing">Analyzing...</string>
+    
+    <!-- Storage Text -->
+    <string name="storage_used">Used</string>
+    <string name="storage_total">Total</string>
+    <string name="storage_available">Available</string>
+    <string name="storage_files">Files:</string>
+    
+    <!-- Quality Text -->
+    <string name="quality_label">Quality: %1$d%%</string>
+    <string name="size_reduction_minimal">Minimal reduction</string>
+    <string name="size_reduction_small">Small reduction</string>
+    <string name="size_reduction_medium">Medium reduction</string>
+    <string name="size_reduction_high">High reduction</string>
+    
+    <!-- Preview Text -->
+    <string name="preview_excellent_quality">Excellent quality</string>
+    <string name="preview_good_quality">Good quality</string>
+    <string name="preview_acceptable_quality">Acceptable quality</string>
+    <string name="preview_lower_quality">Lower quality</string>
+    
+    <!-- Error Messages -->
+    <string name="error_permission_denied_title">Permission Denied</string>
+    <string name="error_permission_denied_message">ShrinkSpace needs access to your media files to help you organize and clean up storage space.</string>
+    <string name="error_storage_full_title">Storage Full</string>
+    <string name="error_storage_full_message">Your device storage is full. Please free up some space before continuing.</string>
+    <string name="error_network_title">Network Error</string>
+    <string name="error_network_message">Unable to connect to the network. Please check your internet connection.</string>
+    <string name="error_media_access_title">Media Access Error</string>
+    <string name="error_media_access_message">Unable to access your media files. Please check your permissions.</string>
+    <string name="error_compression_title">Compression Error</string>
+    <string name="error_compression_message">Unable to compress the selected files. Please try again.</string>
+    <string name="error_general_title">Something went wrong</string>
+    <string name="error_general_message">An unexpected error occurred. Please try again.</string>
+    
+    <!-- Empty State Messages -->
+    <string name="empty_state_no_media_title">No Media Found</string>
+    <string name="empty_state_no_media_message">Your device doesn\'t have any media files yet. Add some photos or videos to get started.</string>
+    <string name="empty_state_no_permissions_title">Permissions Required</string>
+    <string name="empty_state_no_permissions_message">ShrinkSpace needs permission to access your media files to help you organize and clean up storage space.</string>
+    <string name="empty_state_error_title">Unable to Load</string>
+    <string name="empty_state_error_message">There was an error loading your media files. Please try again.</string>
+    
+    <!-- Loading Messages -->
+    <string name="loading_first_launch">This may take a few minutes on first launch</string>
+    <string name="loading_scanning">Scanning your media files...</string>
+    <string name="loading_analyzing">Analyzing media quality...</string>
+    <string name="loading_compressing">Compressing files...</string>
+    
+    <!-- Carousel Text -->
+    <string name="carousel_page_indicator">%1$d / %2$d</string>
+    <string name="carousel_photo_info">%1$s • %2$s</string>
+    
+    <!-- Additional Info -->
+    <string name="additional_info_compression">Compression may take a few moments depending on file size</string>
+    <string name="additional_info_analysis">AI analysis helps identify the best photos automatically</string>
+</resources>

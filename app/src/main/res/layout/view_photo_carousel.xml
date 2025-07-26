@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Carousel Container -->
+        <FrameLayout
+            android:id="@+id/carousel_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/carousel_height"
+            android:background="@drawable/carousel_background">
+
+            <!-- Photo ViewPager -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/photo_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/spacing_medium" />
+
+            <!-- Page Indicator -->
+            <TextView
+                android:id="@+id/page_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/spacing_medium"
+                android:background="@drawable/page_indicator_background"
+                android:padding="@dimen/spacing_small"
+                android:textSize="@dimen/text_caption"
+                android:textColor="@color/on_primary"
+                tools:text="1 / 5" />
+
+            <!-- Photo Info Chip -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/photo_info_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="@dimen/spacing_medium"
+                android:textSize="@dimen/text_caption"
+                app:chipMinHeight="@dimen/chip_compact_height"
+                tools:text="PHOTO • 2.5 MB" />
+
+        </FrameLayout>
+
+        <!-- Action Container -->
+        <LinearLayout
+            android:id="@+id/action_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/action_height"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_medium"
+            android:gravity="center">
+
+            <!-- Skip Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/skip_button"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:text="Skip"
+                android:textSize="@dimen/text_body"
+                tools:visibility="visible" />
+
+            <!-- Select Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/select_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:text="Keep This"
+                android:textSize="@dimen/text_body"
+                app:cornerRadius="@dimen/card_corner_radius"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</merge> 
