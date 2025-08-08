@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.kreasaar.shrinkspace"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.kreasaar.shrinkspace"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -70,6 +70,9 @@ dependencies {
         implementation(libs.gson)
         implementation(libs.glide)
         kapt(libs.glide.compiler)
+    // SplashScreen API
+    implementation(libs.androidx.core.splashscreen)
+    // Compose (needed for existing theme files and previews)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)

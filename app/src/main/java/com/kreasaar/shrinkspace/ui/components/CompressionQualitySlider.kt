@@ -63,10 +63,14 @@ class CompressionQualitySlider @JvmOverloads constructor(
         qualitySlider.value = 80f
         qualitySlider.stepSize = 5f
 
-        // Set slider colors
-        qualitySlider.trackActiveTintList = ContextCompat.getColorStateList(context, R.color.slider_active)
-        qualitySlider.trackInactiveTintList = ContextCompat.getColorStateList(context, R.color.slider_inactive)
-        qualitySlider.thumbTintList = ContextCompat.getColorStateList(context, R.color.slider_thumb)
+        // Set slider colors (ensure non-null ColorStateList)
+        val activeColor = ContextCompat.getColor(context, R.color.slider_active)
+        val inactiveColor = ContextCompat.getColor(context, R.color.slider_inactive)
+        val thumbColor = ContextCompat.getColor(context, R.color.slider_thumb)
+
+        qualitySlider.trackActiveTintList = android.content.res.ColorStateList.valueOf(activeColor)
+        qualitySlider.trackInactiveTintList = android.content.res.ColorStateList.valueOf(inactiveColor)
+        qualitySlider.thumbTintList = android.content.res.ColorStateList.valueOf(thumbColor)
 
         qualitySlider.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {

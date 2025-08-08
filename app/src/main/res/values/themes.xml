@@ -32,6 +32,13 @@
         <item name="android:navigationBarColor">@color/surface</item>
     </style>
     
+    <!-- Splash theme for Android 12+ API 31 -->
+    <style name="Theme.ShrinkSpace.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/surface</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.ShrinkSpace</item>
+    </style>
+    
     <!-- Dark theme variant -->
     <style name="Theme.ShrinkSpace.Dark" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
