@@ -56,8 +56,8 @@ class HomeViewModel @Inject constructor(
     }
     
     private suspend fun loadStorageStatistics(): StorageInfo = withContext(Dispatchers.IO) {
-        val totalSpace = storageUtils.getTotalStorageSpace()
-        val availableSpace = storageUtils.getAvailableStorageSpace()
+        val totalSpace = storageUtils.getTotalStorage()
+        val availableSpace = storageUtils.getAvailableStorage()
         val usedSpace = totalSpace - availableSpace
         val usagePercentage = ((usedSpace.toFloat() / totalSpace.toFloat()) * 100).toInt()
         

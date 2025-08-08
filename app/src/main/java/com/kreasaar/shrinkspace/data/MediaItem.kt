@@ -1,15 +1,16 @@
 package com.kreasaar.shrinkspace.data
 
+import android.net.Uri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "media_items")
 data class MediaItem(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val uri: String,
-    val path: String,
+    @PrimaryKey val id: Long,
+    val name: String,
+    val uri: Uri,
     val type: String,
-    val date: Long,
     val size: Long,
-    val status: String
+    val dateAdded: Long,
+    val path: String
 ) 

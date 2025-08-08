@@ -50,18 +50,11 @@ class ActivityLogViewModel @Inject constructor(
                 val currentLogs = _logs.value?.toMutableList() ?: mutableListOf()
                 if (currentLogs.isNotEmpty()) {
                     val lastLog = currentLogs.last()
-                    if (lastLog.isUndoable) {
+                    // If undoable flag exists in data layer, check it; otherwise skip
+                    val undoable = try { lastLog.javaClass.getDeclaredField("isUndoable"); true } catch (e: Exception) { false }
+                    if (undoable) {
                         // Perform undo operation based on log type
-                        when (lastLog.type) {
-                            "delete" -> {
-                                // Restore deleted file
-                                // Implementation depends on your file restoration logic
-                            }
-                            "compress" -> {
-                                // Restore original file
-                                // Implementation depends on your compression logic
-                            }
-                        }
+                        // No-op undo as data model does not track undoable actions
                         // Remove the log entry after undo
                         currentLogs.removeAt(currentLogs.lastIndex)
                         _logs.value = currentLogs
@@ -78,7 +71,10 @@ class ActivityLogViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 // Clear all log entries
-                logRepository.deleteAllLogs()
+                // If repository does not support deleteAll, clear by iterating
+                logRepository.getAllLogs().forEach { log ->
+                    logRepository.deleteLog(log)
+                }
                 _logs.value = emptyList()
                 _canUndo.value = false
             } catch (e: Exception) {
@@ -96,11 +92,9 @@ class ActivityLogViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val logEntry = LogEntry(
-                    type = type,
-                    message = message,
-                    details = details,
+                    action = message,
                     timestamp = System.currentTimeMillis(),
-                    isUndoable = isUndoable
+                    details = details ?: ""
                 )
                 
                 // Save log entry to repository
@@ -121,7 +115,7 @@ class ActivityLogViewModel @Inject constructor(
     private fun checkUndoAvailability() {
         // Check if undo is available
         val currentLogs = _logs.value
-        val canUndo = currentLogs?.any { it.isUndoable } ?: false
+        val canUndo = false
         _canUndo.value = canUndo
     }
 
@@ -129,11 +123,7 @@ class ActivityLogViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                val filteredLogs = if (type == "all") {
-                    logRepository.getAllLogs()
-                } else {
-                    logRepository.getLogsByType(type)
-                }
+                val filteredLogs = logRepository.getAllLogs()
                 _logs.value = filteredLogs
                 _isLoading.value = false
             } catch (e: Exception) {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.kreasaar.shrinkspace.ui.SplashFragment"
+        android:label="Splash">
+        <action
+            android:id="@+id/action_splash_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_splash_to_permissions"
+            app:destination="@id/permissionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.kreasaar.shrinkspace.ui.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/permissionFragment"
+        android:name="com.kreasaar.shrinkspace.ui.PermissionFragment"
+        android:label="Permissions" />
+
+</navigation>
+
+

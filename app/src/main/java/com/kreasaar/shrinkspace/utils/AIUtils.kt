@@ -1,6 +1,7 @@
 package com.kreasaar.shrinkspace.utils
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Matrix
 import android.media.ExifInterface

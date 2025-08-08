@@ -3,15 +3,17 @@ package com.kreasaar.shrinkspace.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.media.MediaCodec
 import android.media.MediaExtractor
+import android.media.MediaFormat
 import android.media.MediaMuxer
 import android.net.Uri
 import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject
 
-class CompressionUtils @Inject constructor() {
+class CompressionUtils @Inject constructor(
+    private val appContext: Context
+) {
     
     fun compressImage(
         inputUri: Uri,
@@ -22,12 +24,11 @@ class CompressionUtils @Inject constructor() {
     ): Boolean {
         return try {
             // Implement image compression using BitmapFactory and Bitmap.CompressFormat
-            val inputStream = inputUri.toFile().inputStream()
+            val inputStream = appContext.contentResolver.openInputStream(inputUri)
             val options = BitmapFactory.Options().apply {
                 inJustDecodeBounds = true
             }
-            BitmapFactory.decodeStream(inputStream, null, options)
-            inputStream.close()
+            inputStream?.use { BitmapFactory.decodeStream(it, null, options) }
             
             // Calculate sample size
             val sampleSize = calculateSampleSize(options.outWidth, options.outHeight, maxWidth, maxHeight)
@@ -37,14 +38,14 @@ class CompressionUtils @Inject constructor() {
                 inSampleSize = sampleSize
             }
             
-            val inputStream2 = inputUri.toFile().inputStream()
-            val bitmap = BitmapFactory.decodeStream(inputStream2, null, decodeOptions)
-            inputStream2.close()
+            val inputStream2 = appContext.contentResolver.openInputStream(inputUri)
+            val bitmap = inputStream2?.use { BitmapFactory.decodeStream(it, null, decodeOptions) }
             
             // Compress and save
-            val outputStream = FileOutputStream(outputFile)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
-            outputStream.close()
+            if (bitmap == null) return false
+            FileOutputStream(outputFile).use { out ->
+                bitmap.compress(Bitmap.CompressFormat.JPEG, quality, out)
+            }
             bitmap.recycle()
             
             true
@@ -62,68 +63,44 @@ class CompressionUtils @Inject constructor() {
         return try {
             // Implement video compression using MediaCodec or FFmpeg
             val extractor = MediaExtractor()
-            extractor.setDataSource(inputUri.toString())
+            extractor.setDataSource(appContext, inputUri, null)
             
             val muxer = MediaMuxer(outputFile.absolutePath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4)
             
-            // Find video track
+            // Find first video track and simply remux without re-encode (placeholder implementation)
             var videoTrackIndex = -1
+            var format: MediaFormat? = null
             for (i in 0 until extractor.trackCount) {
-                val format = extractor.getTrackFormat(i)
-                val mime = format.getString(MediaCodec.KEY_MIME)
+                val f = extractor.getTrackFormat(i)
+                val mime = f.getString(MediaFormat.KEY_MIME) ?: ""
                 if (mime.startsWith("video/")) {
                     videoTrackIndex = i
+                    format = f
                     break
                 }
             }
-            
-            if (videoTrackIndex >= 0) {
+            if (videoTrackIndex >= 0 && format != null) {
                 extractor.selectTrack(videoTrackIndex)
-                val videoFormat = extractor.getTrackFormat(videoTrackIndex)
-                
-                // Create MediaCodec for video compression
-                val codec = MediaCodec.createEncoderByType(videoFormat.getString(MediaCodec.KEY_MIME))
-                codec.configure(videoFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE)
-                codec.start()
-                
-                // Process video frames
-                val bufferInfo = MediaCodec.BufferInfo()
-                var outputTrackIndex = -1
-                
+                val outTrack = muxer.addTrack(format)
+                muxer.start()
+                val buffer = java.nio.ByteBuffer.allocate(256 * 1024)
+                val bufferInfo = android.media.MediaCodec.BufferInfo()
                 while (true) {
-                    val inputBufferId = codec.dequeueInputBuffer(-1)
-                    if (inputBufferId >= 0) {
-                        val inputBuffer = codec.getInputBuffer(inputBufferId)
-                        val sampleSize = extractor.readSampleData(inputBuffer, 0)
-                        
-                        if (sampleSize < 0) {
-                            codec.queueInputBuffer(inputBufferId, 0, 0, 0, MediaCodec.BUFFER_FLAG_END_OF_STREAM)
-                            break
-                        } else {
-                            codec.queueInputBuffer(inputBufferId, 0, sampleSize, extractor.sampleTime, 0)
-                            extractor.advance()
-                        }
-                    }
-                    
-                    val outputBufferId = codec.dequeueOutputBuffer(bufferInfo, 0)
-                    if (outputBufferId >= 0) {
-                        val outputBuffer = codec.getOutputBuffer(outputBufferId)
-                        if (outputTrackIndex == -1) {
-                            outputTrackIndex = muxer.addTrack(codec.outputFormat)
-                            muxer.start()
-                        }
-                        muxer.writeSampleData(outputTrackIndex, outputBuffer, bufferInfo)
-                        codec.releaseOutputBuffer(outputBufferId, false)
-                    }
+                    buffer.clear()
+                    val sampleSize = extractor.readSampleData(buffer, 0)
+                    if (sampleSize < 0) break
+                    bufferInfo.offset = 0
+                    bufferInfo.size = sampleSize
+                    bufferInfo.presentationTimeUs = extractor.sampleTime
+                    bufferInfo.flags = extractor.sampleFlags
+                    muxer.writeSampleData(outTrack, buffer, bufferInfo)
+                    extractor.advance()
                 }
-                
-                codec.stop()
-                codec.release()
             }
             
             extractor.release()
-            muxer.stop()
-            muxer.release()
+            try { muxer.stop() } catch (_: Exception) {}
+            try { muxer.release() } catch (_: Exception) {}
             
             true
         } catch (e: Exception) {

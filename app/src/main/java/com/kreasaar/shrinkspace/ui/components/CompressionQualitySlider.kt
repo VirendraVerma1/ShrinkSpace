@@ -66,7 +66,7 @@ class CompressionQualitySlider @JvmOverloads constructor(
         // Set slider colors
         qualitySlider.trackActiveTintList = ContextCompat.getColorStateList(context, R.color.slider_active)
         qualitySlider.trackInactiveTintList = ContextCompat.getColorStateList(context, R.color.slider_inactive)
-        qualitySlider.thumbColor = ContextCompat.getColorStateList(context, R.color.slider_thumb)
+        qualitySlider.thumbTintList = ContextCompat.getColorStateList(context, R.color.slider_thumb)
 
         qualitySlider.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
@@ -153,10 +153,10 @@ class CompressionQualitySlider @JvmOverloads constructor(
     fun setCompactMode(compact: Boolean) {
         if (compact) {
             compressionContainer.orientation = LinearLayout.HORIZONTAL
-            qualitySlider.trackThickness = resources.getDimensionPixelSize(R.dimen.slider_compact_thickness)
+            // Track thickness adjustment not supported on Slider; omit for compatibility
         } else {
             compressionContainer.orientation = LinearLayout.VERTICAL
-            qualitySlider.trackThickness = resources.getDimensionPixelSize(R.dimen.slider_thickness)
+            // Track thickness adjustment not supported on Slider; omit for compatibility
         }
     }
 

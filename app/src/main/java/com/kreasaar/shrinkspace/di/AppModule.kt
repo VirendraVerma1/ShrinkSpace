@@ -90,7 +90,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAIUtils(@ApplicationContext context: Context): AIUtils {
-        return AIUtils(context)
+    fun provideAIUtils(): AIUtils {
+        return AIUtils()
     }
 } 

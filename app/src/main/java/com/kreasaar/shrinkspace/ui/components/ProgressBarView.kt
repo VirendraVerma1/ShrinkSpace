@@ -40,7 +40,6 @@ class ProgressBarView @JvmOverloads constructor(
         progressIndicator.setIndicatorColor(ContextCompat.getColor(context, R.color.primary))
         progressIndicator.trackColor = ContextCompat.getColor(context, R.color.progress_track)
         progressIndicator.trackThickness = resources.getDimensionPixelSize(R.dimen.progress_track_thickness)
-        progressIndicator.indicatorSize = resources.getDimensionPixelSize(R.dimen.progress_indicator_size)
         
         // Set indeterminate animation
         progressIndicator.isIndeterminate = false

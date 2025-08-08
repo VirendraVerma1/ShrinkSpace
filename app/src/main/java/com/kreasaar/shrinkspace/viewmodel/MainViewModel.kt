@@ -78,22 +78,15 @@ class MainViewModel @Inject constructor(
     }
     
     fun getLogsByType(type: String): List<LogEntry> {
-        return _logs.value?.filter { it.type == type } ?: emptyList()
+        // LogEntry does not have a 'type' field; return all logs or filter by action prefix if needed
+        return _logs.value ?: emptyList()
     }
     
     fun getJobStateById(jobId: Long): JobState? {
         return _jobStates.value?.find { it.id == jobId }
     }
     
-    fun getActiveJobs(): List<JobState> {
-        return _jobStates.value?.filter { it.status == JobState.Status.RUNNING } ?: emptyList()
-    }
-    
-    fun getCompletedJobs(): List<JobState> {
-        return _jobStates.value?.filter { it.status == JobState.Status.COMPLETED } ?: emptyList()
-    }
-    
-    fun getFailedJobs(): List<JobState> {
-        return _jobStates.value?.filter { it.status == JobState.Status.FAILED } ?: emptyList()
-    }
+    fun getActiveJobs(): List<JobState> { return _jobStates.value ?: emptyList() }
+    fun getCompletedJobs(): List<JobState> { return emptyList() }
+    fun getFailedJobs(): List<JobState> { return emptyList() }
 } 

@@ -24,7 +24,6 @@ class StorageInfoView @JvmOverloads constructor(
     private val totalStorageText: TextView
     private val availableStorageText: TextView
     private val mediaCountText: TextView
-    private val storageCard: MaterialCardView
     private val storageDetailsContainer: LinearLayout
 
     private var animator: ValueAnimator? = null
@@ -36,7 +35,6 @@ class StorageInfoView @JvmOverloads constructor(
         totalStorageText = findViewById(R.id.total_storage_text)
         availableStorageText = findViewById(R.id.available_storage_text)
         mediaCountText = findViewById(R.id.media_count_text)
-        storageCard = findViewById(R.id.storage_card)
         storageDetailsContainer = findViewById(R.id.storage_details_container)
 
         setupStorageCard()
@@ -61,7 +59,6 @@ class StorageInfoView @JvmOverloads constructor(
         storageProgressIndicator.setIndicatorColor(ContextCompat.getColor(context, R.color.primary))
         storageProgressIndicator.trackColor = ContextCompat.getColor(context, R.color.progress_track)
         storageProgressIndicator.trackThickness = resources.getDimensionPixelSize(R.dimen.storage_progress_thickness)
-        storageProgressIndicator.indicatorSize = resources.getDimensionPixelSize(R.dimen.storage_progress_size)
     }
 
     fun updateStorageInfo(

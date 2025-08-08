@@ -57,14 +57,14 @@ class CompressionViewModel @Inject constructor(
                 var processedItems = 0
                 
                 // Perform compression operations
-                items.forEach { item ->
+                for (item in items) {
                     if (isCancelled) break
-                    
+
                     // Compress each item
                     val success = withContext(Dispatchers.IO) {
                         val inputFile = java.io.File(item.uri.path ?: "")
                         val outputFile = java.io.File(inputFile.parent, "compressed_${inputFile.name}")
-                        
+
                         when (item.type) {
                             "image" -> {
                                 compressionUtils.compressImage(
@@ -83,7 +83,7 @@ class CompressionViewModel @Inject constructor(
                             else -> false
                         }
                     }
-                    
+
                     if (success) {
                         processedItems++
                         _compressionProgress.value = (processedItems * 100) / totalItems

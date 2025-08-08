@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
-import com.google.android.material.ripple.RippleHelper
 import com.kreasaar.shrinkspace.R
 import com.kreasaar.shrinkspace.data.MediaItem
 import com.bumptech.glide.Glide
@@ -72,7 +71,15 @@ class MediaItemView @JvmOverloads constructor(
         }
     }
 
-    private var currentMediaItem: MediaItem? = null
+    private var currentMediaItem: MediaItem = MediaItem(
+        id = -1,
+        name = "",
+        uri = android.net.Uri.EMPTY,
+        type = "",
+        size = 0L,
+        dateAdded = 0L,
+        path = ""
+    )
 
     fun bind(mediaItem: MediaItem, isSelected: Boolean = false) {
         currentMediaItem = mediaItem

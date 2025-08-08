@@ -7,6 +7,9 @@ interface MediaDao {
     @Query("SELECT * FROM media_items")
     suspend fun getAll(): List<MediaItem>
 
+    @Query("SELECT * FROM media_items WHERE id = :id")
+    suspend fun getById(id: Long): MediaItem?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(mediaItem: MediaItem): Long
 
