@@ -26,6 +26,45 @@
         android:name="com.kreasaar.shrinkspace.ui.PermissionFragment"
         android:label="Permissions" />
 
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.kreasaar.shrinkspace.ui.GalleryFragment"
+        android:label="Gallery" />
+
+    <fragment
+        android:id="@+id/smartSuggestionsFragment"
+        android:name="com.kreasaar.shrinkspace.ui.SmartSuggestionsFragment"
+        android:label="Smart Suggestions" />
+
+    <fragment
+        android:id="@+id/compressionOptionsFragment"
+        android:name="com.kreasaar.shrinkspace.ui.CompressionOptionsFragment"
+        android:label="Compression Options" />
+
+    <fragment
+        android:id="@+id/bestPhotoPickerFragment"
+        android:name="com.kreasaar.shrinkspace.ui.BestPhotoPickerFragment"
+        android:label="Best Photo Picker" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kreasaar.shrinkspace.ui.SettingsFragment"
+        android:label="Settings" />
+
+    <fragment
+        android:id="@+id/reviewListFragment"
+        android:name="com.kreasaar.shrinkspace.ui.ReviewListFragment"
+        android:label="Review List" />
+
+    <fragment
+        android:id="@+id/activityLogFragment"
+        android:name="com.kreasaar.shrinkspace.ui.ActivityLogFragment"
+        android:label="Activity Log" />
+
+    <fragment
+        android:id="@+id/errorStateFragment"
+        android:name="com.kreasaar.shrinkspace.ui.ErrorStateFragment"
+        android:label="Error" />
 </navigation>
 
 

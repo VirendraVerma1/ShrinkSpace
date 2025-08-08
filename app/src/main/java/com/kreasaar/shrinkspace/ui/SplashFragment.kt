@@ -10,6 +10,10 @@ import com.kreasaar.shrinkspace.R
 import com.kreasaar.shrinkspace.ui.viewmodels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import android.content.Context
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
@@ -44,6 +48,21 @@ class SplashFragment : Fragment() {
         
         // Start initialization
         viewModel.initializeApp()
+        // Kick off a background delta sync if permissions exist
+        if (viewModel.hasPermissions()) {
+            // First-run full scan
+            val prefs = requireContext().getSharedPreferences("app_init", Context.MODE_PRIVATE)
+            val isInitialized = prefs.getBoolean("is_initialized", false)
+            if (!isInitialized) {
+                val scanWork = OneTimeWorkRequestBuilder<com.kreasaar.shrinkspace.background.MediaScanWorker>().build()
+                WorkManager.getInstance(requireContext())
+                    .enqueueUniqueWork("media_full_scan", ExistingWorkPolicy.KEEP, scanWork)
+                prefs.edit().putBoolean("is_initialized", true).apply()
+            }
+            val work = OneTimeWorkRequestBuilder<com.kreasaar.shrinkspace.background.MediaSyncWorker>().build()
+            WorkManager.getInstance(requireContext())
+                .enqueueUniqueWork("media_delta_sync", ExistingWorkPolicy.KEEP, work)
+        }
     }
     
     private fun navigateToNextScreen() {

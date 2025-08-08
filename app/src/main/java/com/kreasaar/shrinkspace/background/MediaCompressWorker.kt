@@ -5,6 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.kreasaar.shrinkspace.data.MediaItem
 import com.kreasaar.shrinkspace.data.MediaRepository
+import com.kreasaar.shrinkspace.data.ShrinkSpaceDatabase
 import com.kreasaar.shrinkspace.utils.CompressionUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,11 +16,14 @@ class MediaCompressWorker(
     params: WorkerParameters
 ) : CoroutineWorker(context, params) {
 
-    @Inject
-    lateinit var mediaRepository: MediaRepository
+    private val mediaRepository: MediaRepository by lazy {
+        val db = ShrinkSpaceDatabase.getDatabase(applicationContext)
+        MediaRepository(db.mediaDao())
+    }
 
-    @Inject
-    lateinit var compressionUtils: CompressionUtils
+    private val compressionUtils: CompressionUtils by lazy {
+        com.kreasaar.shrinkspace.utils.CompressionUtils(applicationContext)
+    }
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {

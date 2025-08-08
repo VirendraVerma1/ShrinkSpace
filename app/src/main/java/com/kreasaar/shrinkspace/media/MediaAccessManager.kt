@@ -6,6 +6,7 @@ import android.os.Build
 import android.provider.MediaStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import com.kreasaar.shrinkspace.data.MediaItem
 
 class MediaAccessManager @Inject constructor(
     @ApplicationContext private val context: Context
@@ -217,14 +218,4 @@ class MediaAccessManager @Inject constructor(
             false
         }
     }
-
-    data class MediaItem(
-        val id: Long,
-        val name: String,
-        val uri: Uri,
-        val type: String,
-        val size: Long,
-        val dateAdded: Long,
-        val path: String
-    )
 } 

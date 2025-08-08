@@ -15,8 +15,10 @@ class MediaSyncWorker(
     params: WorkerParameters
 ) : CoroutineWorker(context, params) {
 
-    @Inject
-    lateinit var mediaRepository: MediaRepository
+    private val mediaRepository: MediaRepository by lazy {
+        val db = com.kreasaar.shrinkspace.data.ShrinkSpaceDatabase.getDatabase(applicationContext)
+        MediaRepository(db.mediaDao())
+    }
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
